@@ -2,7 +2,7 @@ package com.mmajewski.experimental.exercise.one;
 
 import java.util.*;
 
-public class Exercise {
+class Exercise {
 
     public static void main(String[] args) {
         Set<Class<?>> allImplementedInterfaces = findAllImplementedInterfaces(ArrayList.class);
@@ -14,7 +14,7 @@ public class Exercise {
      * Note: If the input is an interface itself, the method returns all the interfaces the
      * input interface extends.
      */
-    public static Set<Class<?>> findAllImplementedInterfaces(Class<?> input) {
+    static Set<Class<?>> findAllImplementedInterfaces(Class<?> input) {
         Set<Class<?>> allImplementedInterfaces = new HashSet<>();
 
         Class<?>[] inputInterfaces = input.getInterfaces();
