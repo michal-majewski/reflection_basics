@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+class Main {
     public static void main(String[] args) throws InvocationTargetException, InstantiationException, IllegalAccessException {
         printConstructorData(Address.class);
         printConstructorData(Person.class);
@@ -15,7 +15,7 @@ public class Main {
         System.out.println(person);
     }
 
-    public static <T> T createInstanceWithArguments(Class<T> clazz, Object... args)
+    static <T> T createInstanceWithArguments(Class<T> clazz, Object... args)
             throws InvocationTargetException, InstantiationException, IllegalAccessException {
         for (Constructor<?> constructor : clazz.getDeclaredConstructors()) {
             if (args.length == constructor.getParameterTypes().length) {
@@ -27,7 +27,7 @@ public class Main {
         return null;
     }
 
-    public static void printConstructorData(Class<?> clazz) {
+    static void printConstructorData(Class<?> clazz) {
         Constructor<?>[] constructors = clazz.getDeclaredConstructors();
 
         System.out.printf("Class %s has %d declared constructors%n",
