@@ -3,7 +3,8 @@ package com.mmajewski.experimental.intro;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class Main {
+class Main {
+
     public static void main(String[] args) throws ClassNotFoundException {
         Class<String> stringClass = String.class;
 
@@ -12,8 +13,6 @@ public class Main {
 
         Class<?> squareClass = Class.forName("com.mmajewski.experimental.intro.Main$Square");
 
-//        printClassInfo(stringClass, hashMapClass, squareClass);
-
         var circleObject = new Drawable() {
             @Override
             public int getNumberOfCorners() {
@@ -21,7 +20,14 @@ public class Main {
             }
         };
 
-        printClassInfo(Collection.class, boolean.class, int[][].class, Color.class, circleObject.getClass());
+        printClassInfo(stringClass,
+                hashMapClass,
+                squareClass,
+                Collection.class,
+                boolean.class,
+                int[][].class,
+                Color.class,
+                circleObject.getClass());
     }
 
     private static void printClassInfo(Class<?>... classes) {
@@ -56,20 +62,9 @@ public class Main {
     }
 
     private static class Square implements Drawable {
-
         @Override
         public int getNumberOfCorners() {
             return 4;
         }
-    }
-
-    private interface Drawable {
-        int getNumberOfCorners();
-    }
-
-    private enum Color {
-        BLUE,
-        RED,
-        GREEN
     }
 }
