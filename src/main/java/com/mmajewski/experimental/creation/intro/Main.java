@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.objectcreation;
+package com.mmajewski.experimental.creation.intro;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

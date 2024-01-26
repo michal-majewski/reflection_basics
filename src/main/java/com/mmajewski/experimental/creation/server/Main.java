@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.objectcreation.server;
+package com.mmajewski.experimental.creation.server;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;

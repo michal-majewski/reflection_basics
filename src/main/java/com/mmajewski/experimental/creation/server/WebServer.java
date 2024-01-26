@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.objectcreation.server;
+package com.mmajewski.experimental.creation.server;
 
 import com.sun.net.httpserver.HttpServer;
 

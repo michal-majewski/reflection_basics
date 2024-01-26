@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.objectcreation;
+package com.mmajewski.experimental.creation.intro;
 
 class Address {
     private String street;
