@@ -1,5 +1,6 @@
 package com.mmajewski.experimental.fields.jsonserializer.jsonwriter;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 
 final class JsonWriter {
@@ -32,9 +33,11 @@ final class JsonWriter {
 
             Class<?> type = field.getType();
             if (type.isPrimitive()) {
-                sb.append(formatPrimitiveValue(field, instance));
+                sb.append(formatPrimitiveValue(field.get(instance), field.getType()));
             } else if (type.equals(String.class)) {
                 sb.append(formatStringValue(field.get(instance).toString()));
+            } else if (type.isArray()) {
+                sb.append(arrayToJson(field.get(instance), indentSize + 1));
             } else {
                 sb.append(objectToJson(field.get(instance), indentSize + 1));
             }
@@ -44,6 +47,40 @@ final class JsonWriter {
             }
             sb.append("\n");
         }
+    }
+
+    private static String arrayToJson(Object arrayInstance, int indentSize) throws IllegalAccessException {
+        StringBuilder sb = new StringBuilder();
+
+        int arrayLength = Array.getLength(arrayInstance);
+        Class<?> componentType = arrayInstance.getClass().getComponentType();
+
+        sb.append("[");
+        sb.append("\n");
+
+        for (int i = 0; i < arrayLength; i++) {
+            Object element = Array.get(arrayInstance, i);
+
+            if (componentType.isPrimitive()) {
+                sb.append(indent(indentSize + 1));
+                sb.append(formatPrimitiveValue(element, componentType));
+            } else if (componentType.equals(String.class)) {
+                sb.append(indent(indentSize + 1));
+                sb.append(formatStringValue(element.toString()));
+            } else {
+                sb.append(indent(indentSize + 1));
+                sb.append(objectToJson(element, indentSize + 1));
+            }
+
+            if (i != arrayLength - 1) {
+                sb.append(", ");
+            }
+            sb.append("\n");
+        }
+
+        sb.append(indent(indentSize));
+        sb.append("]");
+        return sb.toString();
     }
 
     private static void endJson(int indentSize, StringBuilder sb) {
@@ -64,12 +101,11 @@ final class JsonWriter {
         return sb.toString();
     }
 
-    private static String formatPrimitiveValue(Field field, Object parentInstance) throws IllegalAccessException {
-        Class<?> type = field.getType();
+    private static String formatPrimitiveValue(Object instance, Class<?> type) {
         if (type.equals(boolean.class) || type.equals(int.class) || type.equals(long.class) || type.equals(short.class)) {
-            return field.get(parentInstance).toString();
+            return instance.toString();
         } else if (type.equals(double.class) || type.equals(float.class)) {
-            return String.format("%.02f", field.get(parentInstance));
+            return String.format("%.02f", instance);
         }
 
         throw new RuntimeException(String.format("Type: %s is unsupported", type.getName()));

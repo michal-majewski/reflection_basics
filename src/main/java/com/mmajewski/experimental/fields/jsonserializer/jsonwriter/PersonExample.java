@@ -4,7 +4,7 @@ import com.mmajewski.experimental.fields.jsonserializer.data.Address;
 import com.mmajewski.experimental.fields.jsonserializer.data.Company;
 import com.mmajewski.experimental.fields.jsonserializer.data.Person;
 
-class Main {
+class PersonExample {
     public static void main(String[] args) throws IllegalAccessException {
         Address companyAddress = new Address("CompanyStreet", (short) 20);
         Company company = new Company("Nice Job!", companyAddress);
