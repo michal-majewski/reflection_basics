@@ -4,6 +4,7 @@ import com.mmajewski.experimental.fields.modification.data.GameConfig;
 import com.mmajewski.experimental.fields.modification.data.UserInterfaceConfig;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -46,11 +47,30 @@ class Main {
             }
 
             field.setAccessible(true);
-            Object parsedValue = parseValue(field.getType(), propertyValue);
+
+            Object parsedValue;
+            if (field.getType().isArray()) {
+                parsedValue = parseArray(field.getType().getComponentType(), propertyValue);
+            } else {
+                parsedValue = parseValue(field.getType(), propertyValue);
+            }
+
             field.set(configInstance, parsedValue);
         }
 
         return configInstance;
+    }
+
+    private static Object parseArray(Class<?> arrayElementType, String value) {
+        String[] elementValues = value.split(",");
+
+        Object array = Array.newInstance(arrayElementType, elementValues.length);
+
+        for (int i = 0; i < elementValues.length; i++) {
+            Array.set(array, i, parseValue(arrayElementType, elementValues[i]));
+        }
+
+        return array;
     }
 
     private static Object parseValue(Class<?> type, String value) {

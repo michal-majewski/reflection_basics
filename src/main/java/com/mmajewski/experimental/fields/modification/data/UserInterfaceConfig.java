@@ -1,27 +1,23 @@
 package com.mmajewski.experimental.fields.modification.data;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public final class UserInterfaceConfig {
-    private String titleColor;
-    private String footerText;
-    private short titleFontSize;
-    private short footerFontSize;
+    private String titleText;
+    private String[] titleFonts;
+    private short[] titleTextSizes;
 
-    public String titleConfig() {
-        return titleColor;
+    public String titleText() {
+        return titleText;
     }
 
-    public String footerText() {
-        return footerText;
+    public String[] titleFonts() {
+        return titleFonts;
     }
 
-    public short titleFontSize() {
-        return titleFontSize;
-    }
-
-    public short footerFontSize() {
-        return footerFontSize;
+    public short[] titleTextSizes() {
+        return titleTextSizes;
     }
 
     @Override
@@ -29,24 +25,21 @@ public final class UserInterfaceConfig {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (UserInterfaceConfig) obj;
-        return Objects.equals(this.titleColor, that.titleColor) &&
-                Objects.equals(this.footerText, that.footerText) &&
-                this.titleFontSize == that.titleFontSize &&
-                this.footerFontSize == that.footerFontSize;
+        return Objects.equals(this.titleText, that.titleText) &&
+                Arrays.equals(this.titleFonts, that.titleFonts) &&
+                Arrays.equals(this.titleTextSizes, that.titleTextSizes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titleColor, footerText, titleFontSize, footerFontSize);
+        return Objects.hash(titleText, Arrays.hashCode(titleFonts), Arrays.hashCode(titleTextSizes));
     }
 
     @Override
     public String toString() {
         return "UserInterfaceConfig[" +
-                "titleConfig=" + titleColor + ", " +
-                "footerText=" + footerText + ", " +
-                "titleFontSize=" + titleFontSize + ", " +
-                "footerFontSize=" + footerFontSize + ']';
+                "titleText=" + titleText + ", " +
+                "titleFonts=" + Arrays.toString(titleFonts) + ", " +
+                "titleTextSizes=" + Arrays.toString(titleTextSizes) + ']';
     }
-
 }

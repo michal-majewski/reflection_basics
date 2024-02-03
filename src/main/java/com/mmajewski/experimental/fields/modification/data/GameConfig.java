@@ -1,11 +1,13 @@
 package com.mmajewski.experimental.fields.modification.data;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public final class GameConfig {
     private int releaseYear;
     private String gameName;
     private double price;
+    private String[] characterNames;
 
     public int releaseYear() {
         return releaseYear;
@@ -19,6 +21,10 @@ public final class GameConfig {
         return price;
     }
 
+    public String[] characterNames() {
+        return characterNames;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -26,12 +32,13 @@ public final class GameConfig {
         var that = (GameConfig) obj;
         return this.releaseYear == that.releaseYear &&
                 Objects.equals(this.gameName, that.gameName) &&
-                Double.doubleToLongBits(this.price) == Double.doubleToLongBits(that.price);
+                Double.doubleToLongBits(this.price) == Double.doubleToLongBits(that.price) &&
+                Arrays.equals(this.characterNames, that.characterNames);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(releaseYear, gameName, price);
+        return Objects.hash(releaseYear, gameName, price, Arrays.hashCode(characterNames));
     }
 
     @Override
@@ -39,7 +46,7 @@ public final class GameConfig {
         return "GameConfig[" +
                 "releaseYear=" + releaseYear + ", " +
                 "gameName=" + gameName + ", " +
-                "price=" + price + ']';
+                "price=" + price + ", " +
+                "characterName=" + Arrays.toString(characterNames) + ']';
     }
-
 }
