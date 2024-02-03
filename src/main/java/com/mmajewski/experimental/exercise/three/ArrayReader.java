@@ -31,7 +31,7 @@ final class ArrayReader {
      * The output is "David".
      * </pre>
      */
-    public static <T> T getArrayElement(T[] array, int index) {
+    public static <T> T getArrayElement(Object[] array, int index) {
         if (IS_NEGATIVE.test(index)) {
             return (T) get(array, getLength(array) + index);
         }
