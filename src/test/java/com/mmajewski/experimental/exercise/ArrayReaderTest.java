@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.exercise.three;
+package com.mmajewski.experimental.exercise;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

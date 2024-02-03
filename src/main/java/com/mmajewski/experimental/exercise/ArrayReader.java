@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.exercise.three;
+package com.mmajewski.experimental.exercise;
 
 import java.util.function.IntPredicate;
 

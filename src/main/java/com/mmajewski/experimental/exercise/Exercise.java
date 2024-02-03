@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.exercise.one;
+package com.mmajewski.experimental.exercise;
 
 import java.util.*;
 

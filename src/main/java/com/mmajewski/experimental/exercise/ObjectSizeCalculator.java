@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.exercise.two;
+package com.mmajewski.experimental.exercise;
 
 import java.lang.reflect.*;
 
