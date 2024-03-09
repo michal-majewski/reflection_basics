@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.parameters;
+package com.mmajewski.experimental.invokechain.parameters;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.mmajewski.experimental.parameters.annotations.Annotations.*;
+import static com.mmajewski.experimental.invokechain.parameters.annotations.Annotations.*;
 
 class Main {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {

@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.parameters;
+package com.mmajewski.experimental.invokechain.parameters;
 
 import java.util.*;
 import java.util.stream.Collectors;

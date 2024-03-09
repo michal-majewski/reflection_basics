@@ -1,10 +1,8 @@
-package com.mmajewski.experimental.parameters;
-
-import com.mmajewski.experimental.parameters.annotations.Annotations;
+package com.mmajewski.experimental.invokechain.parameters;
 
 import java.util.*;
 
-import static com.mmajewski.experimental.parameters.annotations.Annotations.*;
+import static com.mmajewski.experimental.invokechain.parameters.annotations.Annotations.*;
 
 class BestGameFinder {
     private final Database database = new Database();

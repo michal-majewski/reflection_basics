@@ -1,4 +1,4 @@
-package com.mmajewski.experimental.parameters.annotations;
+package com.mmajewski.experimental.invokechain.parameters.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
